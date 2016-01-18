@@ -16,7 +16,7 @@ var blackDog = Song.create({
 
 var yellowLedbetter = Song.create({
   title: 'Yellow Ledbetter',
-  band: 'Pearl jame',
+  band: 'Pearl Jam',
   rating: 4
 });
 

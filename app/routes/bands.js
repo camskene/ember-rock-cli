@@ -37,11 +37,6 @@ var Band = Ember.Object.extend({
 
   slug: Ember.computed('name', function() {
     return this.get('name').dasherize();
-  }),
-
-  site: Ember.computed('slug', 'language', function() {
-    console.log('Recompute site');
-    return 'http://bands.com/' + this.get('slug') + '.' + this.get('language');
   })
 });
 

@@ -1,12 +1,12 @@
-<ul class="list-group songs">
+<div class="list-group songs">
   <div class="list-group-item form-inline">
     {{input value=title type="text" class="form-control new-song" placeholder="New Song"}}
     <button {{action "createSong"}} disabled={{isAddButtonDisabled}} class="btn btn-primary">Add</button>
   </div>
   {{#each model.songs as |song| }}
-    <li class="list-group-item song">
+    <div class="list-group-item song">
       {{song.title}}
       {{star-rating item=song rating=song.rating on-click=(action "updateRating") classNames="pull-right"}}
-    </li>
+    </div>
   {{/each}}
-</ul>
+</div>

@@ -56,14 +56,14 @@ var fooFighters = Band.create({
 });
 
 // Define a 'collection' to hold instances of Band instances
-var BandCollection = Ember.Object.extend({
+var BandsCollection = Ember.Object.extend({
   content: [],
   sortProperties: ['name:desc'],
   sortedContent: Ember.computed.sort('content', 'sortProperties')
 });
 
-// instance of BandCollection
-var bands = BandCollection.create();
+// instance of BandsCollection
+var bands = BandsCollection.create();
 
 bands.get('content').pushObjects([ledZeppelin, pearlJam, fooFighters]);
 

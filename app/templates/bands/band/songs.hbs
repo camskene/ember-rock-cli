@@ -1,12 +1,24 @@
 <div class="list-group songs">
-  <div class="list-group-item form-inline">
-    {{input value=title type="text" class="form-control new-song" placeholder="New Song"}}
-    <button {{action "createSong"}} disabled={{isAddButtonDisabled}} class="btn btn-primary">Add</button>
-  </div>
+  {{#if canCreateSong}}
+    <div class="list-group-item form-inline">
+      {{input value=title type="text" class="form-control new-song" placeholder="New Song"}}
+      <button {{action "createSong"}} disabled={{isAddButtonDisabled}} class="btn btn-primary">Add</button>
+    </div>
+  {{/if}}
+
   {{#each model.songs as |song| }}
     <div class="list-group-item song">
       {{song.title}}
       {{star-rating item=song rating=song.rating on-click=(action "updateRating") classNames="pull-right"}}
     </div>
   {{/each}}
+
+  {{#unless canCreateSong}}
+    <div class="well">
+      There are no songs yet for {{bandName}}. Why don't you <a href {{action "enableSongCreation" }}>create one?</a>
+    </div>
+  {{/unless}}
 </div>
+
+
+{{log "canCreateSong" canCreateSong}}

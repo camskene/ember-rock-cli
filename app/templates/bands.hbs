@@ -1,6 +1,10 @@
 <div class="row">
   <div class="col-md-4">
     <div class="list-group">
+      <div class="list-group-item form-inline">
+        {{input value=name type="text" class="form-control new-band" placeholder="New Band"}}
+        <button {{action "createBand"}} class="btn btn-primary new-band-button">Add</button>
+      </div>
       {{#each model.sortedContent as |band|}}
         {{#link-to "bands.band.songs" band class="list-group-item band-link"}}
           {{band.name}}
@@ -11,6 +15,5 @@
   </div>
   <div class="col-md-8">
     {{outlet}}
-
   </div>
 </div>

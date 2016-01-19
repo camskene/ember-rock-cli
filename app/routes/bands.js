@@ -72,6 +72,9 @@ export default Ember.Route.extend({
 
       // reset name property to empty string
       this.get('controller').set('name', '');
+
+      // transition to newly created band page
+      this.transitionTo('bands.band.songs', band);
     }
   }
 });

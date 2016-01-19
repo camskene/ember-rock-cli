@@ -1,11 +1,6 @@
 import Ember from 'ember';
-
-// create Song 'model'
-var Song = Ember.Object.extend({
-  title: '',
-  rating: 0,
-  band: ''
-});
+import Band from '../models/band';
+import Song from '../models/song';
 
 // create instances of Song with create method
 var blackDog = Song.create({
@@ -30,14 +25,6 @@ var pretender = Song.create({
   title: 'The Pretender',
   band: 'Foo Fighters',
   rating: 2
-});
-
-var Band = Ember.Object.extend({
-  name: '',
-
-  slug: Ember.computed('name', function() {
-    return this.get('name').dasherize();
-  })
 });
 
 var ledZeppelin = Band.create({

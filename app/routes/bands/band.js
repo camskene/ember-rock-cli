@@ -2,8 +2,8 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 
-  model(params) {
+  model: function(params) {
     var bands = this.modelFor('bands');
-    return bands.get('content').findyBy('slug', params.slug);
+    return bands.get('content').findBy('slug', params.slug);
   }
 });

@@ -32,6 +32,8 @@ module.exports = function(environment) {
   };
 
   if (environment === 'development') {
+    ENV.contentSecurityPolicy = contentSecurityPolicy;
+    ENV.contentSecurityPolicy['script-src'] =  "'self' 'unsafe-eval'";
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;

@@ -34,7 +34,8 @@ var ledZeppelin = Band.create({
 
 var pearlJam = Band.create({
   name: 'Pearl Jam',
-  songs: [yellowLedbetter, daughter]
+  songs: [yellowLedbetter, daughter],
+  description: 'Pear Jam is an American rock band, formed in Seattle, Washington in 1990.'
 });
 
 var fooFighters = Band.create({
@@ -60,6 +61,10 @@ export default Ember.Route.extend({
   },
 
   actions: {
+    didTransition: function() {
+      document.title = 'Bands - Rock & Roll';
+    },
+
     createBand: function() {
       // get name value that was set on the controller via the input
       var name = this.get('controller').get('name');

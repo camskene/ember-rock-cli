@@ -14,20 +14,15 @@ export default Ember.Route.extend({
     },
 
     createBand: function() {
-      // get name value that was set on the controller via the input
-      var name = this.get('controller').get('name');
+      var route = this;
+      var controller = this.get('controller');
 
-      // create new Band and set it's name attribute
-      var band = Band.create({name: name});
+      var band = this.store.createRecord('band', controller.getProperties('name'));
 
-      // add our band to the BandsCollection
-      bands.get('content').pushObject(band);
-
-      // reset name property to empty string
-      this.get('controller').set('name', '');
-
-      // transition to newly created band page
-      this.transitionTo('bands.band.songs', band);
+      band.save().then(function() {
+        controller.set('name', '');
+        route.transitionTo('bands.band.songs', band);
+      });
     }
   }
 });

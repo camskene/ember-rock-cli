@@ -5,6 +5,10 @@ export default Ember.Route.extend({
     return this.modelFor('bands.band');
   },
 
+  resetController(controller) {
+    controller.set('songCreationStarted', false);
+  },
+
   actions: {
     didTransition: function() {
       var band = this.modelFor('bands.band');

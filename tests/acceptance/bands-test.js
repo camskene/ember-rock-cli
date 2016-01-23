@@ -17,12 +17,21 @@ test('List bands', function(assert) {
             attributes: {
               name: 'Radiohead'
             }
-          },
+          }
+        ]
+      };
+
+      return [200, {'Content-Type': 'applicaton/vnd.api+json'}, JSON.stringify(response)];
+    });
+
+    this.post('/bands', function() {
+      var response = {
+        data: [
           {
             id: 2,
             type: 'bands',
             attributes: {
-              name: 'Long Distance Calling'
+              name: ''
             }
           }
         ]
@@ -35,9 +44,13 @@ test('List bands', function(assert) {
 
   visit('/bands');
 
+  fillIn('.new-band', 'Led Zeppelin');
+
+  click('.new-band-button');
+
   andThen(function() {
     assert.equal(find('.band-link').length, 2, 'All band links are rendered');
     assert.equal(find('.band-link:contains("Radiohead")').length, 1, 'First band link contains the band name');
-    assert.equal(find('.band-link:contains("Long Distance Calling")').length, 1, 'The other band link contains the band name');
-    });
+    assert.equal(find('.band-link:contains("Led Zeppelin")').length, 1, 'The other band link contains the band name');
+  });
 });

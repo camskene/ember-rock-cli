@@ -2,7 +2,7 @@
   {{#if canCreateSong}}
     <div class="list-group-item form-inline">
       {{input value=title type="text" class="form-control new-song" placeholder="New Song"}}
-      <button {{action "createSong"}} disabled={{isAddButtonDisabled}} class="btn btn-primary">Add</button>
+      <button {{action "createSong"}} disabled={{isAddButtonDisabled}} class="btn btn-primary new-song-button">Add</button>
     </div>
   {{/if}}
 

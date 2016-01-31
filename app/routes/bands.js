@@ -1,8 +1,10 @@
 import Ember from 'ember';
+import wait from 'ember-rock-cli/utils/wait';
 
 export default Ember.Route.extend({
   model: function() {
-    return this.store.findAll('band');
+    var bands = this.store.findAll('band');
+    return wait(bands, 3 * 1000);
   },
 
   actions: {

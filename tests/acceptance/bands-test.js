@@ -1,6 +1,7 @@
 import { test } from 'qunit';
 import moduleForAcceptance from 'ember-rock-cli/tests/helpers/module-for-acceptance';
 import Pretender from 'pretender';
+import httpStubs from '../helpers/http-stubs';
 
 moduleForAcceptance('Acceptance | bands');
 
@@ -146,3 +147,73 @@ test('Create a new song in two steps', function(assert) {
     assert.equal(find('.song:contains("Killer Cars")').length, 1, 'Creates a song');
   });
 });
+
+
+test('Sort songs in various ways', function(assert) {
+  server = new Pretender(function() {
+    httpStubs.stubBands(this, [{
+      id: 1,
+      attributes: {
+        name: 'Stone Temple Pilots'
+      }
+    }]);
+
+
+    httpStubs.stubSongs(this, 1, [{
+      id: 1,
+      attributes: {
+        title: 'Interstate Love Song',
+        rating: 5
+      }
+    }, {
+      id: 2,
+      attributes: {
+        title: 'Lounge Fly',
+        rating: 4
+      }
+    }, {
+      id: 3,
+      attributes: {
+        title: 'Meat Plow',
+        rating: 4
+      }
+    }, {
+      id: 4,
+      attributes: {
+        title: 'Vasoline',
+        rating: 5
+      }
+    }]);
+
+    visit('/bands');
+
+    click('.band-link:contains("Stone Temple Pilots")');
+
+    andThen(function() {
+      assert.equal(currentURL(), '/bands/1/songs');
+
+      assert.equal(find('.song:first:contains("Interstate Love Song")').length, 1, 'The first song is highest ranked, first in Alphabet');
+
+      assert.equal(find('.song:contains("Interstate Love Song")').length, 1, 'The last song is highest ranked, first in Alphabet');
+    });
+  });
+});
+
+
+/*
+
+function assertTrimmedText(app, assert, selector, text, errorMessage) {
+  var element = findWithAssert(selector);
+  var elementText = element.text().trim();
+  assert.equal(elementText, text, errorMessage);
+}
+
+function assertLength(app, assert, selector, length, errorMessage) {
+  assert.equal(find(selector).length, length, errorMessage);
+}
+
+function assertElement(app, assert, selector, errorMessage) {
+  assert.equal(find(selector).length, 1, errorMessage);
+}
+
+*/

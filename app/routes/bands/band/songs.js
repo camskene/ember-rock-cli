@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import { capitalize } from 'ember-rock-cli/helpers/capitalize';
 
 export default Ember.Route.extend({
   model() {
@@ -13,7 +14,7 @@ export default Ember.Route.extend({
     didTransition: function() {
       var band = this.modelFor('bands.band');
 
-      document.title = `${band.get('name')} songs - Rock & Roll`;
+      document.title = `${capitalize(band.get('name'))} songs - Rock & Roll`;
     },
 
     createSong: function() {

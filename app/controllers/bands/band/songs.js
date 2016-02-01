@@ -1,11 +1,12 @@
 import Ember from 'ember';
+import { capitalize } from 'ember-rock-cli/helpers/capitalize';
 
 export default Ember.Controller.extend({
 
   title: '',
 
   bandName: Ember.computed('model.name', function() {
-    return this.get('model.name');
+    return capitalize(this.get('model.name'));
   }),
 
   isAddButtonDisabled: Ember.computed('title', function() {

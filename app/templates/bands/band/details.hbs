@@ -3,7 +3,7 @@
   <div class="panel-body">
     <h4>Description</h4>
 
-    {{#if isEditing}}
+    {{#liquid-if isEditing class="band-description"}}
       <div class="form-group"></div>
       {{textarea class="form-control" value=model.description}}
       <br />
@@ -11,7 +11,7 @@
     {{else}}
       <p>{{model.description}}</p>
       <button class="btn btn-primary" {{action "edit"}}>Edit</button>
-    {{/if}}
+    {{/liquid-if}}
 
   </div>
 </div>

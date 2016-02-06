@@ -10,5 +10,6 @@ export default function() {
     this.hasClass('band-description'),
     this.toValue(false),
     this.use('fade', {duration: 500})
-  )
+  );
 }
+

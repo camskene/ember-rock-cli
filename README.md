@@ -1,7 +1,27 @@
 # Ember-rock-cli
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+An app to catalog your music collection based on Balint Erdi's excellent 'Rock and Roll with Ember'.
+
+## Demo
+
+View a working example - [demo](http://sheltered-eyrie-99245.herokuapp.com/bands).
+
+## About
+
+This application has the following features:
+
+- A "dashboard" where all bands are listed on the left (with the selected band highlighted) and the songs belonging to the selected band on the right.
+- A streamlined – yet very simple – flow to add a new band and then start adding songs to it.
+- Pulls data from a remote API.
+- Prevents users from losing unsaved changes by warning them when they're about to leave a form that's been edited.
+- A bunch of tests, both high and low-level to safeguard our application.
+- The ability to sort the songs based on multiple properties, selectable by the user.
+- Search songs.
+- Make sure all band names and song titles have the correct case, no matter how the user entered them.
+- A handful of animations to give more nuanced feedback about user actions.
+- Extract a component in the application into an Ember [addon](https://github.com/camskene/ember-cli-star-rating).
+- Use some state-of-the-art JavaScript ES2015 (ES6).
+
 
 ## Prerequisites
 
@@ -41,10 +61,11 @@ Make use of the many generators for code, try `ember help generate` for more det
 
 ### Deploying
 
-Specify what it takes to deploy your app.
+* `git push heroku master`
 
 ## Further Reading / Useful Links
 
+* [Rock and Roll with Ember](http://balinterdi.com/rock-and-roll-with-emberjs/)
 * [ember.js](http://emberjs.com/)
 * [ember-cli](http://www.ember-cli.com/)
 * Development Browser Extensions

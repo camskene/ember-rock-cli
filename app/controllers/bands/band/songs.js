@@ -20,9 +20,9 @@ export default Ember.Controller.extend({
   songCreationStarted: false,
 
   actions: {
-    updateRating: function(params) {
+    updateRating(params) {
       var song = params.item;
-      var rating = params.rating;
+      let rating = params.rating;
 
       if (song.get('rating') === rating) {
         rating = 0;
@@ -33,13 +33,13 @@ export default Ember.Controller.extend({
       song.save();
     },
 
-    enableSongCreation: function() {
+    enableSongCreation() {
       this.set('songCreationStarted', true);
     },
 
     // Action initiated when one of the sort buttons is clicked.
     // It sets the the `sortBy` property to the value passed along with the action.
-    setSorting: function(option) {
+    setSorting(option) {
       this.set('sortBy', option);
     }
   },
@@ -55,9 +55,9 @@ export default Ember.Controller.extend({
 
   // Returns a new array of songs that match our search term (or parts thereof)
   matchingSongs: Ember.computed('model.songs.@each.title', 'searchTerm', function() {
-    var searchTerm = this.get('searchTerm').toLowerCase();
 
-    return this.get('model.songs').filter(function(song) {
+    return this.get('model.songs').filter((song) => {
+      var searchTerm = this.get('searchTerm').toLowerCase();
       return song.get('title').toLowerCase().indexOf(searchTerm) !== -1;
     });
   }),

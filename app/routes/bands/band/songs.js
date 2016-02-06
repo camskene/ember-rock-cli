@@ -11,13 +11,13 @@ export default Ember.Route.extend({
   },
 
   actions: {
-    didTransition: function() {
+    didTransition() {
       var band = this.modelFor('bands.band');
 
       document.title = `${capitalize(band.get('name'))} songs - Rock & Roll`;
     },
 
-    createSong: function() {
+    createSong() {
       var controller = this.get('controller');
       var band = this.modelFor('bands.band');
 

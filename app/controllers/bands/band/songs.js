@@ -9,13 +9,9 @@ export default Ember.Controller.extend({
     return capitalize(this.get('model.name'));
   }),
 
-  isAddButtonDisabled: Ember.computed('title', function() {
-    return Ember.isEmpty(this.get('title'));
-  }),
+  isAddButtonDisabled: Ember.computed.empty('title'),
 
-  canCreateSong: Ember.computed('songCreationStarted', 'model.songs.length', function() {
-    return this.get('songCreationStarted') || this.get('model.songs.length');
-  }),
+  canCreateSong: Ember.computed.or('songCreationStarted', 'model.songs.length'),
 
   songCreationStarted: false,
 

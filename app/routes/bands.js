@@ -2,7 +2,10 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   model() {
-    return this.store.findAll('band');
+    return Ember.RSVP.hash({
+      bands: this.store.findAll('band'),
+      songs: this.store.findAll('song'),
+    });
   },
 
   actions: {

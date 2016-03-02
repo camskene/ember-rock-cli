@@ -12,9 +12,8 @@ export default Ember.Route.extend({
 
   actions: {
     didTransition() {
-      var band = this.modelFor('bands.band');
-
-      document.title = `${capitalize(band.get('name'))} songs - Rock & Roll`;
+      var model = this.modelFor('bands.band');
+      document.title = `${capitalize(model.get('name'))} songs - Rock & Roll`;
     },
 
     createSong() {
@@ -23,10 +22,12 @@ export default Ember.Route.extend({
 
       var song = this.store.createRecord('song', {
         title: controller.get('title'),
+        rating: null,
         band: band
       });
 
       song.save().then(function() {
+        band.save();
         controller.set('title', '');
       });
     }

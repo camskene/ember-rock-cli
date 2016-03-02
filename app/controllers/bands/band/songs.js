@@ -47,12 +47,13 @@ export default Ember.Controller.extend({
 
   searchTerm: '',
 
-  sortBy: 'ratingDesc',
+  sortBy: 'titleAsc',
 
   // Returns a new array of songs that match our search term (or parts thereof)
   matchingSongs: Ember.computed('model.songs.@each.title', 'searchTerm', function() {
+    let songs = this.get('model').get('songs');
 
-    return this.get('model.songs').filter((song) => {
+    return songs.filter((song) => {
       var searchTerm = this.get('searchTerm').toLowerCase();
       return song.get('title').toLowerCase().indexOf(searchTerm) !== -1;
     });

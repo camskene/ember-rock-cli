@@ -1,23 +1,12 @@
 /* jshint node: true */
 
-var contentSecurityPolicy = {
-  'default-src': "'none'",
-  'script-src': "'self'",
-  'font-src': "'self'",
-  'connect-src': "'self' localhost:* json-api.rockandrollwithemberjs.com:*",
-  'img-src': "'self'",
-  'style-src': "'self' 'unsafe-inline'",
-  'media-src': "'self'"
-};
-
 module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'ember-rock-cli',
     environment: environment,
+    firebase: 'https://ember-rock.firebaseio.com/',
     baseURL: '/',
     locationType: 'auto',
-    apiHost: 'http://json-api.rockandrollwithemberjs.com',
-    contentSecurityPolicy: contentSecurityPolicy,
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -32,8 +21,6 @@ module.exports = function(environment) {
   };
 
   if (environment === 'development') {
-    ENV.contentSecurityPolicy = contentSecurityPolicy;
-    ENV.contentSecurityPolicy['script-src'] =  "'self' 'unsafe-eval'";
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
@@ -45,7 +32,6 @@ module.exports = function(environment) {
     // Testem prefers this...
     ENV.baseURL = '/';
     ENV.locationType = 'none';
-    ENV.apiHost = '';
 
     // keep test console output quieter
     ENV.APP.LOG_ACTIVE_GENERATION = false;
